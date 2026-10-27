@@ -5,17 +5,20 @@ import software.ulpgc.io.*;
 import software.ulpgc.statistic.GenderFrequencyCalculator;
 
 import java.io.*;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("--- Iteración 3: Fichero a Memoria ---");
+        System.out.println("--- Iteración 2: URL a Fichero Local ---");
 
-        File file = new File("employees.tsv");
+        URL url = new URL("https://raw.githubusercontent.com/sachin365123/CSV-files-for-Data-Science-and-Machine-Learning/refs/heads/main/Employee%20Dataset%20-%20TSV.txt");
 
-        try (InputStream is = new FileInputStream(file);
-             ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+        File outputFile = new File("statistics.tsv");
+
+        try (InputStream is = url.openStream();
+             OutputStream os = new FileOutputStream(outputFile)) {
 
             EmployeeLoader loader = StreamEmployeeLoader.with(is, TsvEmployeeDeserializer.create());
             List<Employee> employees = loader.load();
@@ -24,9 +27,6 @@ public class Main {
 
             StatisticsWriter writer = TsvStatisticsWriter.with(os);
             writer.write(statistics);
-
-            System.out.println("Resultados guardados en memoria (ByteArrayOutputStream):");
-            System.out.println(os.toString());
         }
     }
 }

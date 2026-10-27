@@ -26,4 +26,4 @@ La kata se ha repetido tres veces (visible en el historial de commits) introduci
 - [x] Tratamiento de errores controlado: El sistema detecta filas mal formadas (ej. género inválido en la fila de "George") mostrando un aviso por consola (`Optional.empty()`) sin detener la ejecución.
 
 ## Vídeo Explicativo
-[Enlace al vídeo en YouTube/Drive]
+https://drive.google.com/file/d/1R78WdNI6qRadc_PE32clkyLgT5tOkv9A/view?usp=drive_link
